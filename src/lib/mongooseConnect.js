@@ -1,13 +1,5 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable (.env.local for local development, or a Wrangler secret/Worker environment variable for Cloudflare deployments).'
-  );
-}
-
 let cached = global.mongoose;
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -16,6 +8,14 @@ if (!cached) {
 }
 
 async function mongooseConnect() {
+  const MONGODB_URI = process.env.MONGODB_URI;
+
+  if (!MONGODB_URI) {
+    throw new Error(
+      'Please define the MONGODB_URI environment variable (.env.local for local development, or a Wrangler secret/Worker environment variable for Cloudflare deployments).'
+    );
+  }
+
   // If we have a cached connection, return it
   if (cached.conn) {
     return cached.conn;
