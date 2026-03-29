@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node -e \"if (process.platform === 'win32') { console.log('Skipping OpenNext postbuild on Windows.'); } else { require('node:child_process').execSync('opennextjs-cloudflare build --skipNextBuild', { stdio: 'inherit', shell: true }); }\"",
     "start": "next start",
     "lint": "eslint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

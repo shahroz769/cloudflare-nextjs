@@ -1,5 +1,6 @@
 const nextConfig = {
   allowedDevOrigins: ['192.168.1.100'],
+  output: 'standalone',
   logging: {
     browserToTerminal: true,
   },
