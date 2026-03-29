@@ -1,8 +1,9 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "china-unique-items",
+  "name": "cloudflare-nextjs",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-03-29",
+  "keep_vars": true,
   "compatibility_flags": [
     "nodejs_compat"
   ],
